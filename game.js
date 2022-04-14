@@ -1,3 +1,5 @@
+// import platform from './assets/platform.png'
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -180,3 +182,4 @@ window.addEventListener("keyup", ({ key }) => {
       break;
   }
 });
+
