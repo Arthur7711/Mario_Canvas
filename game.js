@@ -51,7 +51,10 @@ class Platform {
 }
 
 const player = new Player();
-const platforms = [new Platform({ x: 200, y: 500 }),new Platform({ x: 400, y: 300 })];
+const platforms = [
+  new Platform({ x: 200, y: 500 }),
+  new Platform({ x: 400, y: 300 }),
+];
 
 const keys = {
   right: {
@@ -61,6 +64,8 @@ const keys = {
     pressed: false,
   },
 };
+
+let scrollOffset = 0;
 
 function animate() {
   requestAnimationFrame(animate);
@@ -79,16 +84,20 @@ function animate() {
     player.velocity.x = 0;
     // platform to left-right
     if (keys.right.pressed) {
+      scrollOffset += 5;
       platforms.forEach((platform) => {
         platform.position.x -= 5;
       });
     } else if (keys.left.pressed) {
+      scrollOffset -= 5;
       platforms.forEach((platform) => {
         platform.position.x += 5;
       });
     }
+    if (scrollOffset >= 2000) {
+      console.log("winner");
+    }
   }
-
   //   platformWork
   platforms.forEach((platform) => {
     if (
